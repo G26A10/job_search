@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 16px;
+    color: #252525;
+}
+
+header .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+header a {
+    margin-left: 12px;
+}
+
+header .logo {
+    font-weight: bold;
+    margin-left: 0;
+}
+
+footer {
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    font-size: 13px;
+}
+
+form {
+    max-width: 450px;
+}
+
+form.wide {
+    max-width: none;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+input[type="text"], input[type="email"], input[type="password"],
+input[type="number"], select, textarea {
+    display: block;
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+button, .button {
+    padding: 7px 14px;
+    margin-top: 12px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.search-row {
+    display: flex;
+    gap: 10px;
+}
+
+.search-row div {
+    flex: 1;
+}
+
+.captcha {
+    margin-top: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+th {
+    background: #eef2f7;
+}
+
+table form {
+    display: inline;
+    max-width: none;
+}
+
+table button, table .button {
+    margin-top: 0;
+}
+
+.success { color: #176530; }
+.error { color: #a42525; }
+.date { color: #777; font-size: 13px; }
+.company { font-weight: bold; }
