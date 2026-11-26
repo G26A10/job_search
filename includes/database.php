@@ -66,3 +66,30 @@ function createTables($pdo)
     )');
 }
 
+/**
+ * Создает администратора, если в базе нет ни одного.
+ *
+ * @param PDO $pdo подключение к базе
+ * @return void
+ */
+function addStartData($pdo)
+{
+    $count = $pdo->query("SELECT COUNT(*) FROM users WHERE role = 'admin'")->fetchColumn();
+    if ($count > 0) {
+        return;
+    }
+
+    $hash = password_hash('Admin123', PASSWORD_DEFAULT);
+
+    // Если пользователь с таким email уже есть, делаем его администратором
+    $stmt = $pdo->prepare('SELECT id FROM users WHERE email = ?');
+    $stmt->execute(['admin@example.com']);
+
+    if ($stmt->fetch()) {
+        $stmt = $pdo->prepare("UPDATE users SET role = 'admin', password = ? WHERE email = ?");
+        $stmt->execute([$hash, 'admin@example.com']);
+    } else {
+        $stmt = $pdo->prepare('INSERT INTO users (name, email, password, role, created_at) VALUES (?, ?, ?, ?, ?)');
+        $stmt->execute(['Администратор', 'admin@example.com', $hash, 'admin', date('Y-m-d H:i:s')]);
+    }
+}
